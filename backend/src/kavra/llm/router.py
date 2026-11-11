@@ -156,7 +156,11 @@ class Router:
         """
         schema = strict_schema(out)
         errors: list[str] = []
-        for p in self.chains.get(role, []):
+        chain = self.chains.get(role, [])
+        # local mode has a single model: allow self-audit rather than no audit at all
+        if avoid and all(f"{p.name}:{p.model}" == avoid for p in chain):
+            avoid = None
+        for p in chain:
             key = f"{p.name}:{p.model}"
             if key == avoid:
                 continue

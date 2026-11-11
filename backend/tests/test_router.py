@@ -57,6 +57,13 @@ def test_schema_violation_falls_through(db: Database):
     assert res.provider == "good"
 
 
+def test_single_model_chain_self_audits(db: Database):
+    only = FakeProvider(lambda *_: {"word": "x", "n": 1}, name="ollama", model="m")
+    r = Router({"auditor": [only]}, db=db)
+    _, res = r.call("auditor", "s", "u", Out, avoid="ollama:m")
+    assert res.provider == "ollama"
+
+
 def test_all_fail_raises(db: Database):
     def dead(*_):
         raise LLMError("unauthorized", 401)
