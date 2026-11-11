@@ -25,7 +25,6 @@ jobs:
       - run: uv run pytest -q
 
   frontend:
-    if: hashFiles('frontend/package.json') != ''
     runs-on: ubuntu-latest
     defaults:
       run:
