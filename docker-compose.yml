@@ -1,0 +1,31 @@
+# Not tested on the author's machine (no Docker there); local run is the primary path.
+services:
+  api:
+    image: ghcr.io/astral-sh/uv:python3.11-bookworm-slim
+    working_dir: /app/backend
+    command: sh -c "uv sync --extra ml --extra ocr && uv run kavra serve --host 0.0.0.0"
+    env_file: .env
+    environment:
+      DATA_DIR: /data
+      HF_HOME: /hf
+      OLLAMA_URL: http://ollama:11434
+      CORS_ORIGINS: http://localhost:3000
+    volumes: [".:/app", "kavra-data:/data", "hf-cache:/hf"]
+    ports: ["8000:8000"]
+  web:
+    image: node:22-bookworm-slim
+    working_dir: /app/frontend
+    command: sh -c "npm ci && npm run build && npm start"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    volumes: [".:/app"]
+    ports: ["3000:3000"]
+    depends_on: [api]
+  ollama:
+    image: ollama/ollama
+    profiles: ["local"]
+    volumes: ["ollama:/root/.ollama"]
+volumes:
+  kavra-data:
+  hf-cache:
+  ollama:
