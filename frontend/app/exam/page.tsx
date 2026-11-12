@@ -58,7 +58,7 @@ function ExamSetup({ onStart }: { onStart: (e: Exam) => void }) {
   const dateFmt = new Intl.DateTimeFormat(locale === "tr" ? "tr-TR" : "en-US", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" });
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[1fr_280px]">
+    <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_280px]">
       <Card className="p-5 sm:p-6">
         <Choice label={t.exam.count} options={COUNTS} value={count} onChange={setCount} suffix={t.common.questions} />
         <Choice label={t.exam.duration} options={MINUTES} value={minutes} onChange={setMinutes} suffix={t.common.minutes} />

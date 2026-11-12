@@ -36,7 +36,7 @@ export default function InsightsPage() {
             <Stat label={t.insights.cost} value="$0.00" hint="free tiers" accent />
           </div>
 
-          <section className="mt-10 grid gap-6 lg:grid-cols-2">
+          <section className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-2">
             <Card className="p-5">
               <SectionTitle>{t.doc.rejectedBy}</SectionTitle>
               {Object.keys(q.data.rejected).length === 0 ? (

@@ -55,7 +55,7 @@ export default function DocumentPage() {
       />
       <LiveStatus doc={d} onDone={() => (doc.reload(), qs.reload())} />
 
-      <div className="grid gap-8 lg:grid-cols-[1fr_300px]">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_300px]">
         <section>
           <SectionTitle>{t.doc.topics}</SectionTitle>
           {d.topic_list.length ? (

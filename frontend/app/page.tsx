@@ -67,7 +67,7 @@ export default function TodayPage() {
   return (
     <>
       {greet}
-      <div className="grid gap-4 lg:grid-cols-[1.5fr_1fr]">
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1.5fr_1fr]">
         {/* Today card */}
         <Card className="relative overflow-hidden p-6 sm:p-7">
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center">

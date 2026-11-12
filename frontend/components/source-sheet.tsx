@@ -35,7 +35,7 @@ export function SourceSheet({ source, open, onOpenChange }: { source: Source | n
         </blockquote>
         {source.context && (
           <div className="mt-5">
-            <p className="eyebrow mb-2">{source.document.title}</p>
+            <p className="mb-2 text-xs font-semibold text-ink-3">{source.document.title}</p>
             <p className="whitespace-pre-line text-sm leading-relaxed text-ink-2">
               {parts ? (
                 <>
