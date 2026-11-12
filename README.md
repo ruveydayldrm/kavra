@@ -15,6 +15,26 @@ Source-grounded questions, FSRS spaced repetition, timed exams — on 100% free 
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT">
 </p>
 
+<p align="center"><img src="docs/demo.gif" width="860" alt="Kavra demo: answer, flip, explanation, go to source" /></p>
+
+<table>
+  <tr>
+    <td><img src="docs/screenshots/today-light.png" alt="Today (light)" /></td>
+    <td><img src="docs/screenshots/study-wrong-dark.png" alt="Study feedback (dark)" /></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/document-light.png" alt="Document: topics + verification pipeline" /></td>
+    <td><img src="docs/screenshots/insights-dark.png" alt="Insights (dark)" /></td>
+  </tr>
+</table>
+<p align="center">
+  <img src="docs/screenshots/today-mobile.png" width="200" alt="Today (mobile)" />
+  <img src="docs/screenshots/study-feedback-mobile.png" width="200" alt="Study (mobile)" />
+  <img src="docs/screenshots/study-wrong-mobile-dark.png" width="200" alt="Study wrong (mobile, dark)" />
+  <img src="docs/screenshots/library-mobile-dark.png" width="200" alt="Library (mobile, dark)" />
+</p>
+<p align="center"><sub>Screenshots use <code>kavra demo</code> data: hand-written questions that pass through the real verification code, plus a simulated study history.</sub></p>
+
 ---
 
 Upload a PDF, slides, a Word file, a photo of your notes or a YouTube lecture. Kavra maps the
@@ -94,6 +114,10 @@ cd frontend
 npm install
 npm run dev                # http://localhost:3000
 ```
+
+**No API key yet?** `DATA_DIR=./data/demo uv run kavra demo` loads three courses (TR + EN) with
+hand-written, source-verified questions and a simulated study history, so you can try every screen.
+Screenshots: `npm run capture` (playwright-core + system Edge).
 
 Windows without `make`: `scripts/tasks.ps1 dev|test|eval`. Docker: `docker compose up` (provided, not tested on the author's machine).
 

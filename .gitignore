@@ -18,6 +18,8 @@ out/
 *.tsbuildinfo
 next-env.d.ts
 
+docs/frames/
+
 # runtime data
 data/
 eval/runs/
