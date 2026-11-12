@@ -86,6 +86,17 @@ def cmd_ingest(args: argparse.Namespace) -> None:
         print(json.dumps(job, ensure_ascii=False))
 
 
+def cmd_demo(_: argparse.Namespace) -> None:
+    """Fill an empty database with demo material (no API key needed)."""
+    from kavra.db import get_db
+    from kavra.demo import seed
+
+    db = get_db()
+    if db.scalar("SELECT COUNT(*) FROM documents"):
+        raise SystemExit("database is not empty; set DATA_DIR to a new folder for the demo")
+    print(json.dumps(seed(db), ensure_ascii=False, indent=1))
+
+
 def main() -> None:
     _utf8()
     ap = argparse.ArgumentParser(prog="kavra")
@@ -95,6 +106,7 @@ def main() -> None:
     sp.add_argument("--port", type=int, default=8000)
     sp.set_defaults(fn=cmd_serve)
     sub.add_parser("doctor").set_defaults(fn=cmd_doctor)
+    sub.add_parser("demo").set_defaults(fn=cmd_demo)
     ip = sub.add_parser("ingest")
     ip.add_argument("path")
     ip.set_defaults(fn=cmd_ingest)
